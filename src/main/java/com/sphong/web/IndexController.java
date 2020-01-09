@@ -1,5 +1,6 @@
 package com.sphong.web;
 
+
 import com.sphong.config.auth.dto.SessionUser;
 import com.sphong.domain.user.User;
 import com.sphong.web.dto.PostsResponseDto;
@@ -7,7 +8,6 @@ import com.sphong.web.dto.PostsUpdateRequestDto;
 import com.sphong.web.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Parameter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
