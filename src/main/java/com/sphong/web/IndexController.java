@@ -1,6 +1,7 @@
 package com.sphong.web;
 
 
+import com.sphong.config.auth.LoginUser;
 import com.sphong.config.auth.dto.SessionUser;
 import com.sphong.domain.user.User;
 import com.sphong.web.dto.PostsResponseDto;
@@ -23,10 +24,9 @@ public class IndexController {
     private final PostService postService;
 
     @GetMapping("/")
-    public String index(Model model) {
-        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
-        if (sessionUser != null) {
-            model.addAttribute("userName",sessionUser.getName());
+    public String index(Model model, @LoginUser SessionUser user) {
+        if (user != null) {
+            model.addAttribute("userName",user.getName());
         }
         model.addAttribute("posts",postService.findAllDesc());
         return "index";
