@@ -11,6 +11,6 @@ gradle-app.setting
 .gradletasknamecache
 
 #Google OAuth2 properties
-src/main/resources/application-oauth.properties
+src/main/resources/application-oauth.yml
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties

@@ -27,6 +27,10 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String,Object> attributes) {
+        if ("naver".equals(registrationId)){
+            //여기서 id를 user_name에 매핑
+            return ofNaver("id",attributes);
+        }
         return ofGoogle(userNameAttributeName,attributes);
     }
 
@@ -40,6 +44,18 @@ public class OAuthAttributes {
                 .build();
     }
 
+    //naver oauth의 response : JSON
+    //Spring Security에서는 최상위 필드밖에 사용하지 못하므로 user_name을 response 받는다.
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String,Object> attributes) {
+        Map<String,Object> response = (Map<String,Object>)attributes.get("response");
+        return OAuthAttributes.builder()
+                .name((String)attributes.get("name"))
+                .email((String)attributes.get("email"))
+                .picture((String)attributes.get("picture"))
+                .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
     public User toEntity() {
         return User.builder()
                 .name(name)
