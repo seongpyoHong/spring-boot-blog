@@ -144,7 +144,7 @@ class PostsApiControllerTest {
         //when
        mvc.perform(delete(url))
                 .andExpect(status().isOk())
-                .andExpect(content().string("1"));
+                .andExpect(content().string(savedId.toString()));
 
     }
 }
