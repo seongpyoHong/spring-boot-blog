@@ -51,6 +51,6 @@ echo "> 새 어플리케이션 배포"
 JAR_NAME=$(ls $REPOSITORY/ |grep 'jar' | tail -n 1)
 chmod 744 /$REPOSITORY/$JAR_NAME
 echo "> JAR Name: $JAR_NAME"
-nohup java -jar \ 
--Dspring.config.location=/home/ec2-user/app/step1/Spring-boot-CRUD/src/main/resources/application.yaml,/home/ec2-user/app/application-oauth.yml \
- $REPOSITORY/$JAR_NAME 2>&1 &
+nohup java -jar \
+-Dspring.config.location=/home/ec2-user/app/step1/Spring-boot-CRUD/src/main/resources/application.yaml,/home/ec2-user/app/application-oauth.yml,/home/ec2-user/app/application-real-db.yml \
+$REPOSITORY/$JAR_NAME 2>&1 &
