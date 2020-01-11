@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  redis:
+    host: localhost
+    port: 6379
+    session:
+      timeout: 600
+      store-type: redis
+      redis:
+        flush-mode: on-save
+        namespace: spring:session
+  security:
+    oauth2:
+      client:
+        registration:
+            google:
+              client-id: test
+              client-secret: test
+              scope: profile, email

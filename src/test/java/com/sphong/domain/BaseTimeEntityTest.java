@@ -2,6 +2,7 @@ package com.sphong.domain;
 
 import com.sphong.domain.posts.Posts;
 import com.sphong.domain.posts.PostsRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,15 @@ class BaseTimeEntityTest {
     private PostsRepository postsRepository;
 
 
+    @AfterEach
+    public void tearDown() {
+        postsRepository.deleteAll();;
+    }
+
     @Test
     public void test_CreatedTime_ModifiedTime () {
         //given
-        LocalDateTime now = LocalDateTime.of(2020,1,10,0,0,0);
+        LocalDateTime now = LocalDateTime.of(2021,1,10,0,0,0);
         String title = "title";
         String content = "content";
         String author = "author";
