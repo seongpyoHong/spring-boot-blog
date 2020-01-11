@@ -12,5 +12,6 @@ gradle-app.setting
 
 #Google OAuth2 properties
 src/main/resources/application-oauth.yml
+src/main/resources/application-real-db.yml
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
